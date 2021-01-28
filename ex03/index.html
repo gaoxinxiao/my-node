@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        root
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        (async () => {
+            // axios.defaults.baseURL = 'http://localhost:4000'
+            axios.defaults.withCredentials = true
+            const res = await axios.post("/api/users", { foo: 'bar' }, { headers: { 'G-Token': 'tom' } })
+            // const res = await axios.get("/api/users", { headers: { 'G-Token': 'tom' } })
+            console.log('data', res.data)
+            document.writeln(`Response : ${JSON.stringify(res.data)}`)
+        })()
+
+        // let img = new Image()
+        // img.src = 'api/users?abc=123'
+    </script>
+</body>
+
+</html>
