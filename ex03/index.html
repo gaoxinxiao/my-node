@@ -9,18 +9,21 @@
 
 <body>
     <div>
-        root
+        <form action="/api/save" method="post">
+            <input type="text" name="abc" value="123">
+            <input type="submit" value="save">
+        </form>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        (async () => {
-            // axios.defaults.baseURL = 'http://localhost:4000'
-            axios.defaults.withCredentials = true
-            const res = await axios.post("/api/users", { foo: 'bar' }, { headers: { 'G-Token': 'tom' } })
-            // const res = await axios.get("/api/users", { headers: { 'G-Token': 'tom' } })
-            console.log('data', res.data)
-            document.writeln(`Response : ${JSON.stringify(res.data)}`)
-        })()
+        // (async () => {
+        //     // axios.defaults.baseURL = 'http://localhost:4000'
+        //     axios.defaults.withCredentials = true
+        //     const res = await axios.post("/api/users", { foo: 'bar' }, { headers: { 'G-Token': 'tom' } })
+        //     // const res = await axios.get("/api/users", { headers: { 'G-Token': 'tom' } })
+        //     console.log('data', res.data)
+        //     document.writeln(`Response : ${JSON.stringify(res.data)}`)
+        // })()
 
         // let img = new Image()
         // img.src = 'api/users?abc=123'
