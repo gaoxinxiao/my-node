@@ -3,7 +3,7 @@ const cfg = {
     host: 'localhost',
     user: 'root',
     passworld: '123456',
-    database: 'testlist'
+    database: 'mysql-test'
 }
 const conn = mysql.createConnection(cfg)
 
