@@ -1,13 +1,32 @@
-const mysql = require('mysql')
-const cfg = {
-    host: 'localhost',
-    user: 'root',
-    passworld: '123456',
-    database: 'mysql-test'
-}
-const conn = mysql.createConnection(cfg)
+(async () => {
+    const mysql = require('mysql2/promise')
+    const config = {
+        host: 'localhost',
+        user: 'root',
+        password: '123456',
+        database: 'ironman'
+    }
+    const connection = await mysql.createConnection(config)
 
-conn.connect(err =>{
-    if (err) throw err
-    console.log('连接成功')
-})
+    // 查询 conn.query()
+    // 创建表
+    // const CREATE_SQL = await connection.execute(`
+    // CREATE TABLE IF NOT EXISTS test(
+    //   id INT NOT NULL AUTO_INCREMENT,
+    //   message VARCHAR(45) NULL,
+    //   PRIMARY KEY (id)
+    // )
+    // `)
+
+    // 插入数据
+    // const ret = await connection.execute(`
+    // INSERT INTO test (message) VALUE(?)
+    // `, ['abc']);
+
+    //查询
+    const [rows, fields] = await connection.execute(`
+    SELECT * FROM test
+    `);
+
+    console.log(JSON.stringify(rows), 'row123s123')
+})()

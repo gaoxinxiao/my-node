@@ -1,0 +1,19 @@
+{
+  "name": "ex04",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fsdb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  }
+}

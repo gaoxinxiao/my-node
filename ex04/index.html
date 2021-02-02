@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li {
+        list-style: none;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='(item) in list'>{{item.name}} <span @click="deleteItem(item)">X</span></li>
+        </ul>
+        <input type="text" v-model="value" />
+        <button @click='addList'>添加</button>
+    </div>
+    <!-- 正常的引入 cdn 资源即可 -->
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                name: '123',
+                list: [],
+                value: ""
+            },
+            mounted() {
+                this.getList()
+            },
+            methods: {
+                getList() {
+                    fetch('http://localhost:3000/list').then(function (response) {
+                        return response.json();
+                    }).then((myJson) => {
+                        this.list = myJson.data
+                    });
+                },
+                addList() {
+                    fetch(`http://localhost:3000/add?name=${this.value}`).then(function (response) {
+                        return response.json();
+                    }).then((myJson) => {
+                        console.log('添加成功')
+                        this.getList()
+                        this.value = ''
+                    });
+                },
+                deleteItem(item) {
+                    fetch(`http://localhost:3000/del?id=${item.id}`).then(function (response) {
+                        return response.json();
+                    }).then((myJson) => {
+                        console.log('删除成功')
+                        this.getList()
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
